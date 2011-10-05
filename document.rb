@@ -6,20 +6,23 @@ class Document
   end
   
   def import(filename)
-    
+    if File.new(filename)
+      @text = ""
+      File.new(filename, "r").each do |line|
+        @text += line
+      end
+    else
+      false
+    end
   end
   
-  def compare(text2)
-    
-    # convert string to array of characters
-    text_array = text.chars.to_a
-    text2_array = text2.chars.to_a
-    
-    # eliminate whitespace
-    text_array = text_array.chars.to_a.collect{|x| x unless x.strip == ""}.compact
-    text2_array = text2_array.chars.to_a.collect{|x| x unless x.strip == ""}.compact
-    
-    build_graph(text_array, text2_array)
+  def compress
+    # convert string to array of characters and eliminate whitespace
+    text.chars.to_a.collect{|x| x unless x.strip == ""}.compact
+  end
+  
+  def compare(doc2)
+    build_graph(self.compress, doc2.compress)
   end
 
   private
@@ -44,6 +47,5 @@ class Document
           graph[i][j] = [graph[i-1][j-1]+sub, graph[i-1][j]+del, graph[i][j-1]+ins].min
         end
       end
-      graph[m-1][n-1]
     end
 end
