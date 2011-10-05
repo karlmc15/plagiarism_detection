@@ -5,6 +5,10 @@ class Document
     @text = text
   end
   
+  def import(filename)
+    
+  end
+  
   def compare(text2)
     
     # convert string to array of characters
