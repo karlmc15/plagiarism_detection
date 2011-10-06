@@ -1,7 +1,7 @@
 class Document
   attr_accessor :text
 
-  def initialize(text)
+  def initialize(text = "")
     @text = text
   end
   
@@ -11,6 +11,7 @@ class Document
       File.new(filename, "r").each do |line|
         @text += line
       end
+      @text
     else
       false
     end
@@ -28,13 +29,18 @@ class Document
   private
     def build_graph(text1, text2)
       # Define Costs
-      sub = 3
       del = 1
       ins = 1
       
       m = text1.length
       n = text2.length
-      graph = Array.new(text1.length+1, Array.new(text2.length+1))
+      
+      #graph = Array.new(text1.length+1, Array.new(text2.length+1))
+      graph = Array.new(text1.length+1)
+      (0..graph.length-1).each do |i|
+        graph[i] = Array.new(text2.length+1)
+      end
+      
       graph[-1][-1] = 0   # ruby refers to the last element of the array when referencing -1
       
       (0..m-1).each do |i|
@@ -44,8 +50,13 @@ class Document
       (0..n-1).each do |j|
         graph[-1][j] = graph[-1][j-1] + ins
         (0..m-1).each do |i|
-          graph[i][j] = [graph[i-1][j-1]+sub, graph[i-1][j]+del, graph[i][j-1]+ins].min
+          graph[i][j] = [graph[i-1][j-1]+sub(text1[i], text2[j]), graph[i-1][j]+del, graph[i][j-1]+ins].min
         end
       end
+      return graph[m-1][n-1]
+    end
+    
+    def sub(a, b)
+      a == b ? 0 : 3
     end
 end
