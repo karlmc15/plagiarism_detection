@@ -1,0 +1,9 @@
+GEM
+  specs:
+    highline (1.6.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  highline (~> 1.6.2)
