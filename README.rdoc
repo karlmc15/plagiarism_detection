@@ -1,0 +1,15 @@
+== Plagerism Detection
+
+This project is an assignment for our Theory of Algorithms class to explore the area of string matching. This software is not complete by any means and is very much a work in progress.
+
+== Usage
+
+Make sure you have Ruby installed. This has been tested using 1.9.2
+
+Download package and run bundle command.
+
+  > bundle install
+  
+Navigate to the project directory and run the program
+
+  > ruby ./main.rb
