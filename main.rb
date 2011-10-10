@@ -41,8 +41,15 @@ while continue do
       
       choose do |submenu|
         submenu.prompt = "Please choose an option: "
-        submenu.choice("Edit document 1") { @doc1.text = ask "Input text for document 1: "; say "Docment 1 updated!"}
-        submenu.choice("Edit document 2") { @doc2.text = ask "Input text for document 2: "; say "Docment 2 updated!"}
+        submenu.choice("Import document 1") do 
+          @doc1.text = ask "Input absolute filepath: "
+          say "Docment 1 imported!"
+        end
+        submenu.choice("Import document 2") do
+          filename = ask "Input absolute filepath: "
+          @doc2.import(filename)
+          say "Docment 2 imported!"
+        end
         submenu.choice("Back to main menu") {skip=true}
       end
     end
