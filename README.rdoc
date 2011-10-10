@@ -6,7 +6,7 @@ This project is an assignment for our Theory of Algorithms class to explore the 
 
 Make sure you have Ruby installed. This has been tested using 1.9.2
 
-Download package and run bundle command.
+Download package and run the bundle command.
 
   > bundle install
   

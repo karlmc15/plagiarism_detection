@@ -1,5 +1,5 @@
 module Algorithm
-  require './document.rb'
+  require File.expand_path('../document', __FILE__)
 
   def self.generic_dp(x, y)
     del = 1
