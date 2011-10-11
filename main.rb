@@ -6,6 +6,7 @@ require 'highline/import'
 
 @doc1 = Document.new
 @doc2 = Document.new
+@trie = Trie.new
 continue = true
 skip = false
 

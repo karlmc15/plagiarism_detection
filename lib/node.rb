@@ -1,22 +1,31 @@
 class Node
-  attr_accessor :prev, :path, :term
+  attr_accessor :prev, :term, :children
   
-  # create new node by    node1 = Node.new(node0, "a")
-  def initialize(prev, path, term = false)
-    @prev = prev
-    @path = path
-    @term = term
-    @children = []
+  def initialize(parent, term = false)
+    @parent = parent        # Parent node
+    @term = term            # Terminal state?
+    @children = Hash.new    # Hash of all the children
   end
   
-  def add_node(path, term = false)
-    @children << Node.new(self, path, term)
-  end
-  
-  def each_child
-    @children.each do |child|
-      child
+  def add_node(path, term)
+    if children.has_key? path
+      # if this is the last character of the array, set node as terminal state
+      children[path].term = term
+    else
+      # Create a new node if one doesn't already exisit
+      children[path] = Node.new(self, term)    
     end
+    
+    # Return child node
+    return children[path]
+  end
+  
+  def all_children
+    children.each_key.to_a
+  end
+  
+  def get_child(c)
+    children[c]
   end
   
 end
