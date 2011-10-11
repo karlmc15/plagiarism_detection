@@ -1,5 +1,5 @@
 class Node
-  attr_accessor :prev, :term, :children
+  attr_accessor :term, :children
   
   def initialize(parent, term = false)
     @parent = parent        # Parent node
@@ -26,6 +26,10 @@ class Node
   
   def get_child(c)
     children[c]
+  end
+  
+  def map_children
+    children.map { |path, node| [path] + node.map_children }
   end
   
 end

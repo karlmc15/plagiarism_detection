@@ -1,6 +1,7 @@
 require File.expand_path('../lib/algorithm', __FILE__)
 require File.expand_path('../lib/document', __FILE__)
 require File.expand_path('../lib/helpers', __FILE__)
+require File.expand_path('../lib/trie', __FILE__)
 require 'rubygems'
 require 'highline/import'
 
