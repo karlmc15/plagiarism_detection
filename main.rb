@@ -86,6 +86,3 @@ while continue do
   end
   Screen.clear
 end
-
-#test
-
