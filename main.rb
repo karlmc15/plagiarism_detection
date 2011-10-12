@@ -70,6 +70,8 @@ while continue do
         submenu.choice("Generic-DP") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.generic_dp(@doc1, @doc2)}"}
         submenu.choice("LCS-Simple") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.lcs_simple(@doc1, @doc2)}"}
         submenu.choice("LCS-Column") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.lcs_column(@doc1, @doc2)}"}
+	submenu.choice("Insert string into dictionary") 
+	submenu.choice("Search for string in the dictionary") 
         submenu.choice("Back to main menu") {skip=true}
       end
     end
