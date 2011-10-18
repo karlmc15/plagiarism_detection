@@ -8,6 +8,7 @@ require 'highline/import'
 @doc1 = Document.new
 @doc2 = Document.new
 @trie = Trie.new
+
 continue = true
 skip = false
 
@@ -70,8 +71,8 @@ while continue do
         submenu.choice("Generic-DP") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.generic_dp(@doc1, @doc2)}"}
         submenu.choice("LCS-Simple") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.lcs_simple(@doc1, @doc2)}"}
         submenu.choice("LCS-Column") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.lcs_column(@doc1, @doc2)}"}
-	submenu.choice("Insert string into dictionary") 
-	submenu.choice("Search for string in the dictionary") 
+	submenu.choice("Insert string into dictionary") {  @insert = ask "Enter the string you would like to insert into the dictionary: "; print "String inserted. The result is: #{@trie.insert(@insert)}"}
+	submenu.choice("Search for string in the dictionary") { @search = ask "Enter the string you are searching for: "; print "The result is: #{@trie.search(@search)}"}
         submenu.choice("Back to main menu") {skip=true}
       end
     end
