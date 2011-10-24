@@ -49,8 +49,62 @@ module Algorithm
       end
     end
     dsubs graph
+
+     (0..n-1).each do |j|
+      (0..m-1).each do |i|
+        print "\t", graph[i][j]
+      end
+	print "\n"
+    end
   end
   
+  def self.lcs_noSub(x, y)
+    x = checkformat x
+    y = checkformat y
+    m = x.length+1
+    n = y.length+1
+    
+    graph = init_graph(m, n)
+    
+    (0..m-1).each do |i|
+      graph[i][-1] = 0
+    end
+      
+    (0..n-1).each do |j|
+      graph[0][j] = j
+    end
+    (0..m-1).each do |i|
+      graph[i][0] = i
+    end
+
+    (1..n-1).each do |j|
+      (1..m-1).each do |i|
+       graph[i][j] = (x[i-1] == y[j-1]) ? graph[i-1][j-1] : [graph[i-1][j]+1, graph[i][j-1]+1].min
+      end
+    end
+    dsubs graph
+
+    print "\t\t"
+    (0..n-2).each do |j|
+      print x[j], "\t"
+    end
+    print "\n"
+    (0..n-1).each do |j|
+      (0..m-1).each do |i|
+        if (i==0 && j==0)
+          print "\t"
+        end
+	if (i==0 && j>0) 
+	  print y[j-1], "\t"
+        end
+          print graph[i][j], "\t"
+      end
+	print "\n"
+    end
+    print "\n"
+    return graph[x.length-1][y.length-1]
+  end
+
   def self.lcs_column(x, y)
     x = checkformat x
     y = checkformat y
@@ -102,4 +156,7 @@ module Algorithm
         return text
       end
     end
+
+  
+
 end
