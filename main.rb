@@ -74,6 +74,7 @@ while continue do
         submenu.choice("LCS-Column") { print "\n\nCalculating...\n\n"; print "The result is: #{Algorithm.lcs_column(@doc1, @doc2)}"}
 	submenu.choice("Insert string into dictionary") {  @insert = ask "Enter the string you would like to insert into the dictionary: "; print "String inserted. The result is: #{@trie.insert(@insert)}"}
 	submenu.choice("Search for string in the dictionary") { @search = ask "Enter the string you are searching for: "; print "The result is: #{@trie.search(@search)}"}
+        submenu.choice("Longest Prefix") { print "\n\nCalculating...\n\n"; print "\nThe length of the prefix is: #{Algorithm.prefix(@doc1, @doc2)}"}
         submenu.choice("Back to main menu") {skip=true}
       end
     end

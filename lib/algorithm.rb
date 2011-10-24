@@ -132,6 +132,28 @@ module Algorithm
     return c1
   end
     
+  def self.prefix(x, y)
+    x = checkformat x
+    y = checkformat y 
+    length = 0
+
+    if (x[0] != y[0])
+      print "Empty String"
+    else   
+    (0..[x.length-1,y.length-1].min).each do |i|
+      if(x[i] == y[i])
+        length += 1
+        print x[i]
+      else
+        break
+      end
+    end
+    return length
+  end
+    
+   
+  end
+
   private
   
     def self.init_graph(m, n)
@@ -156,6 +178,7 @@ module Algorithm
         return text
       end
     end
+
 
   
 
